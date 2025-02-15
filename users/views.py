@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .serializers import UserRegistrationSerializer, UserLoginSerializer
 from django.contrib.auth import authenticate
 
@@ -20,3 +21,8 @@ class UserLoginView(APIView):
         if user:
             return Response({"message": "Login successful"})
         return Response({"message": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
+class UserLoginView(TokenObtainPairView):
+    pass  # Default view for obtaining JWT
+
+class TokenRefreshView(TokenRefreshView):
+    pass  # Default view for refreshing JWT token
