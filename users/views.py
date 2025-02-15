@@ -28,8 +28,8 @@ class UserLoginView(APIView):
         if user:
             return Response({"message": "Login successful"})
         return Response({"message": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
-class UserLoginView(TokenObtainPairView):
-    pass  # Default view for obtaining JWT
+# class UserLoginView(TokenObtainPairView):
+#     pass  # Default view for obtaining JWT
 
 class TokenRefreshView(TokenRefreshView):
     pass  # Default view for refreshing JWT token
