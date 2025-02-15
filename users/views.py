@@ -1,4 +1,8 @@
 from rest_framework.views import APIView
+from rest_framework import generics
+from .models import Mentor, Mentee
+from .models import Session  
+from .serializers import MentorSerializer, MenteeSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -26,3 +30,35 @@ class UserLoginView(TokenObtainPairView):
 
 class TokenRefreshView(TokenRefreshView):
     pass  # Default view for refreshing JWT token
+
+class MentorListView(generics.ListCreateAPIView):
+    queryset = Mentor.objects.all()
+    serializer_class = MentorSerializer
+
+class MentorDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Mentor.objects.all()
+    serializer_class = MentorSerializer
+
+class MenteeListView(generics.ListCreateAPIView):
+    queryset = Mentee.objects.all()
+    serializer_class = MenteeSerializer
+
+class MenteeDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Mentee.objects.all()
+    serializer_class = MenteeSerializer
+    
+class SessionListView(generics.ListCreateAPIView):
+    queryset = Session.objects.all()
+    serializer_class = SessionSerializer
+
+class SessionDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Session.objects.all()
+    serializer_class = SessionSerializer
+
+class ReviewListView(generics.ListCreateAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
