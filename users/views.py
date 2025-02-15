@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework import generics
+from rest_framework.permissions import AllowAny
 from .models import Mentor, Mentee, Review
 from .models import Session  
 from .serializers import MentorSerializer, MenteeSerializer, SessionSerializer, ReviewSerializer
@@ -10,6 +11,8 @@ from .serializers import UserRegistrationSerializer, UserLoginSerializer
 from django.contrib.auth import authenticate
 
 class UserRegistrationView(APIView):
+    permission_classes = [AllowAny]
+    
     def post(self, request):
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
