@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework import generics
-from .models import Mentor, Mentee
+from .models import Mentor, Mentee, Review
 from .models import Session  
-from .serializers import MentorSerializer, MenteeSerializer
+from .serializers import MentorSerializer, MenteeSerializer, SessionSerializer, ReviewSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
